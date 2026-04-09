@@ -26,11 +26,11 @@ It has been developed by the **Supercomputing Application Services** group at [*
 
 Today's training is composed of:
 
-- A **presentation**](files/Getting_Started_with_MeluXina.pdf (30 minutes)
+- A **presentation** (30 minutes)
     - HPC and HPC platforms
     - How to use an HPC system
     - The specifics of MeluXina supercomputer
-- A **hands-on** session (50 minutes)
+- A **hands-on** session with three activities (50 minutes)
     - First connections to MeluXina
     - HPC workflow: Urban wind simulation and visualization
     - AI workflow: PyTorch notebook with JupyterLab on MeluXina
@@ -39,10 +39,34 @@ Today's training is composed of:
 
 
 
-## Part 1 - Presentation: Short introduction to HPC and MeluXina
+## 👨‍🏫 Part 1 - Presentation: Short introduction to HPC and MeluXina
 
-## Part 2 - Hands-on: Connections to MeluXina
+The presentation covers:
 
-## Part 3 - Hands-on: Urban wind simulation and visualization
+- High Performance Computing
+    - What is HPC?
+- HPC Platforms
+    - Hardware view
+    - Software view
+- Using an HPC platform
+    - User Interfaces
+    - Interactive vs batch job
+    - Job scheduler
+    - Software environment
+- MeluXina in practice
+    - User and project accounts
+    - Data storage
+    - Authentication
+    - Terminal access
+    - Web-portal access
 
-## Part 4 - Hands-on: PyTorch notebook with JupyterLab
+Click on the image below to download the slides of the presentation:
+
+[![Slides](images/slides.png){ width="640" }](files/Getting_Started_with_MeluXina.pdf)
+
+
+## 🔑 Part 2 - Hands-on: Connections to MeluXina
+
+## 🏙️ Part 3 - Hands-on: Urban wind simulation and visualization
+
+## 🧠 Part 4 - Hands-on: PyTorch notebook with JupyterLab
