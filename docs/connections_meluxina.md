@@ -3,7 +3,7 @@
 # Hands-on: Configuring your access to MeluXina
 
 This part will help you to configure your access to MeluXina.
-It goes to three main steps:
+It consists of three main steps:
 
 1. [Setup your **service desk** account](#setup-your-service-desk-account)
 2. [**Command line** access using SSH](#command-line-access-using-ssh-key)
@@ -14,12 +14,12 @@ It goes to three main steps:
 
 ---
 
-##  Setup your service desk account
+## Setup your service desk account
 
 ![Onboarding email](images/onboarding_email.png){ width="520" align="right" }
 
-If this the first time that you're accessing MeluXina, you've received an email with your login information.
-This email (example on the right) includes two important information to setup your account:
+If this is the first time that you're accessing MeluXina, you have received an email with your login information.
+This email (example on the right) includes two important pieces of information to set up your account:
 
 - Your **account username**, in the format `u10XXXX`
 - Your **token** (temporary password), in the format `123456`
@@ -35,14 +35,14 @@ Then, you have to follow the **link in the email**, use your temporary credentia
 
 ## Command line access using SSH key
 
-!!! info "SSH setup is not stricly required, but recommended"
+!!! info "SSH setup is not strictly required, but recommended"
 
     The command line interface is often required to use MeluXina.
     
     If the SSH access is too complicated to setup, you can jump directly to the [web-portal access](#web-portal-access) and use the command line from there.
 
 The Command Line Interface (CLI) with Secure Shell (SSH) is the de-facto standard to access remote Linux machines and supercomputing platforms. 
-It is fast, lightweight, and secure. The security relies on an SSH key pair (public/private keys) which is tied to a specific machine (e.g., your laptop). In other words, the SSH key setup allows to identify and and grant access for to a specific machi practice, it means the 
+It is fast, lightweight, and secure. The security relies on an SSH key pair (public/private keys) which is tied to a specific machine (e.g., your laptop) which can be granted (or not) access to the supercomputer.
 
 ### Setup of SSH Access
 
@@ -119,7 +119,7 @@ If the connection is successful, you should see the MeluXina welcome banner:
 
 ![MeluXina welcome banner](images/meluxina_banner.png){: .center}
 
-The shell prompt (last line on the terminal) should indicate that you're correctly connected to the MeluXina login  node (`login02` or `login03`) as the user `u10XXXX`.
+The shell prompt (last line on the terminal) should indicate that you're correctly connected to the MeluXina login node (`login02` or `login03`) as the user `u10XXXX`.
 
 
 ??? failure "Failing to connect?"
@@ -146,7 +146,7 @@ This training will not teach you how to use the command line. Nevertheless, ther
 - Where are you on the computer? `pwd`
 - What are the files in your home directory? `ls $HOME`
 
-One of the important command you need to know on MeluXina is `myquota`. It shows the **compute and data allocations** for each of your projects.
+One of the important commands you need to know on MeluXina is `myquota`. It shows the **compute and data allocations** for each of your projects.
 
 ![Output of myquota](images/myquota.png){.center}
 

@@ -2,7 +2,7 @@
 
 # Getting Started with MeluXina
 
-This training is given in the context of the [Scynergy 2026 event](https://www.scynergy.events/). It offers to the participants a quick overview of the different ways to access and use [MeluXina supercomputer](https://docs.lxp.lu/system/overview/). 
+This training is given in the context of the [Scynergy 2026 event](https://www.scynergy.events/). It provides participants with a quick overview of the different ways to access and use the [MeluXina supercomputer](https://docs.lxp.lu/system/overview/).
 
 ![](images/meluxina.jpg){ width="800" }
 
@@ -58,7 +58,7 @@ Today's training is composed of:
         - Web-portal access
 
 
------------------------------------
+---
 
 ## 💻 Hands-on: Getting Started with MeluXina
 
