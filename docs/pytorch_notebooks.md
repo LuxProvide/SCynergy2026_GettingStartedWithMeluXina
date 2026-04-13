@@ -4,7 +4,7 @@
 
 ![PyTorch](images/pytorch_logo.png){align="right" width="320"}
 
-In this part, you will get familiar with running Jupyter notebooks on the MeluXina HPC system. We will guide you through setting up the environment, i.e., running your JupyterLab instance on a compute node and execute the code from within the browser. The examples below focus specifically on **PyTorch notebooks**, which have been taken directly from the [official PyTorch tutorials](https://docs.pytorch.org/tutorials/index.html) to demonstrate practical deep learning workflows on our infrastructure.
+In this part, you will get familiar with running Jupyter notebooks on the MeluXina HPC system. We will guide you through setting up the environment, i.e., running your JupyterLab instance on a compute node and execute the code from within the browser. The examples below focus specifically on **PyTorch notebooks**, which have been taken directly from the [official PyTorch tutorials](https://docs.pytorch.org/tutorials/index.html) to demonstrate practical deep learning workflows on our infrastructure with minimal adaptation.
 
 
 ---
