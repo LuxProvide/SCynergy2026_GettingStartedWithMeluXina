@@ -35,8 +35,8 @@ Once connected, you should see the MeluXina welcome banner:
 ### HPC Job Submission
 
 A submission script for Slurm has been prepared for you to easily run this parallel HPC simulation.
-You can submit it using the following command.
 
+👉 Submit the simulation job using the following command:
 ```bash
 sbatch /project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_philharmonie/run.sh
 ```
@@ -124,6 +124,29 @@ sbatch /project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_p
 
 ### Execution monitoring
 
+Your HPC job is now queued on MeluXina supercomputer. You can monitor its status using the Slurm command `squeue`.
+
+👉 Run the `squeue` command to see the status of your job:
+```
+squeue
+```
+
+!!! info "About the job state"
+
+    The output of `squeue` shows information about your current jobs in the queue:
+    ![`squeue` output](images/squeue_output.png){.center}
+    
+    The field `STATE` indicate the current status of the job. It typically goes from:
+    ```mermaid
+    flowchart LR
+        PENDING --> CONFIGURING --> RUNNING
+        RUNNING --> COMPLETED
+        RUNNING --> FAILED
+    ```
+    
+    After some time, the finished jobs (i.e., `COMPLETED` or `FAILED`) disapear from the list.
+
+👉 Monitor the execution of your job until it is finished. Then you can continue to the next step.
 
 
 ## ▶️ Post-processing the simulation output
