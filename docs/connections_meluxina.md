@@ -1,4 +1,4 @@
-![SCynergy 2026](./assets/scynergy2026.png){ width="640" }
+![SCynergy 2026](./assets/scynergy2026.png){ width="640" .off-glb }
 
 # Hands-on: Configuring your access to MeluXina
 
@@ -6,7 +6,7 @@ This part will help you to configure your access to MeluXina.
 It consists of three main steps:
 
 1. [Setup your **service desk** account](#setup-your-service-desk-account)
-2. [**Command line** access using SSH](#command-line-access-using-ssh-key)
+2. [**Command line** access using SSH](#command-line-access-using-ssh)
 3. [**Web-portal** access](#web-portal-access)
 
 ![Command Line](images/command_line_interface.png){ width="460"}
@@ -190,15 +190,15 @@ Upon successful login, you'll land on the Open OnDemand Welcome page with access
 
 Let's test some basic features of the Open OnDemand portal for MeluXina.
 
-![Open OnDemand Shell](images/ood_shell.png){ align="left" width="100" }
+![Open OnDemand Shell](images/ood_shell.png){ align="left" width="100" .off-glb }
 <br>The command line interface can be accessed by clicking the **Shell Access** icon. 
 It opens a new tab with a command line interface to the MeluXina login node.
-It offers similar possibilities to the [Command line access using SSH key](#command-line-access-using-ssh-key) that you have seen before. You can try the `myquota` command or one of the other [commands listed earlier for testing](#testing-the-command-line).<br><br>
+It offers similar possibilities to the [Command line access using SSH key](#command-line-access-using-ssh) that you have seen before. You can try the `myquota` command or one of the other [commands listed earlier for testing](#testing-the-command-line).<br><br>
 
-![Open OnDemand Files](images/ood_home.png){ align="left" width="100" }
+![Open OnDemand Files](images/ood_home.png){ align="left" width="100" .off-glb }
 <br>The **Home Directory** application allows you to explore the files in your home directory. Your project directories are also visible on the left column. You can navigate through your directories, view, download and upload files on your storage space of MeluXina.<br><br><br>
 
-![Open OnDemand Files](images/ood_jobs.png){ align="left" width="100" }
+![Open OnDemand Files](images/ood_jobs.png){ align="left" width="100" .off-glb }
 <br>The **Active Jobs** application displays your computation jobs currently running on MeluXina. This also includes the ones you started from the command line interface. For privacy reason, you cannot see the jobs of the other users.<br><br><br>
 
 Other applications will be used in the following parts of the training. In the [Urban wind simulation and visualization](urban_wind_simulation.md), you will use the **ParaView** application to visualize the result of your simulation. In the [PyTorch notebook with JupyterLab](pytorch_notebook.md), you will start a **JupyterLab** on a compute node to perform an deep learning training with PyTorch.

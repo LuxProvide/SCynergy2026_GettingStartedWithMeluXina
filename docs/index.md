@@ -1,4 +1,4 @@
-![SCynergy 2026](./assets/scynergy2026.png){ width="640" }
+![SCynergy 2026](./assets/scynergy2026.png){ width="640" .off-glb }
 
 # Getting Started with MeluXina
 
