@@ -184,7 +184,7 @@ You can use it as any other graphical application, but keep in mind that there c
 
 We will now open the results of the urban wind simulation in Paraview.
 
-👉 In the Paraview menu **File**, click **Load State...**
+👉 In the Paraview menu **File**, click on **Load State...**
 
 ![Paraview load state](images/paraview_load_state-1.png){.center}
 
@@ -196,25 +196,59 @@ We will now open the results of the urban wind simulation in Paraview.
         - `447ZZZZ` being the job ID of your submitted job.
     - In this directory, open the file named **`philharmonie.pvsm`**.
 
-Then, make sure to use the settings below:
+Then, make sure to use the settings below and click **OK**.
 ![Paraview load state](images/paraview_load_state-2.png){.center}
+
+A simple 3D model of the Place de l'Europe and of the Philharmonie will open. 
+It will show the simulated wind streamlines and wind speed.
+You can change the view, zoom-in and zoom-out to explore the simulation output.
 
 ![Urban Wind around the Philharmonie in Paraview](images/paraview_philharmonie.png){.center}
 
+??? tip "Return to a clean state"
+
+    After many changes, maybe you will want to reset the view. 
+    In this case, the easiest is to go in the **Edit** menu and click on **Reset Session**.
+    Then you can load the simulation results again to restart from a clean state.
+
 ### Create a video of the results
+
+Finally, we generate a video of the urban wind simulation.
+
+👉 In the Paraview menu **File**, click on **Save Animation...**
 
 ![](images/paraview_animation-1.png){.center}
 
+Follow the settings below:
+
+- Remember the directory in which you save the animation.
+- Use a meaningful filename, e.g., `philharmonie-wind-meluxina.avi`.
+- Select the the file type **FFMPEG AVI**.
+
 ![](images/paraview_animation-2.png){.center}
 
+In the animation options, use a frame rate of *5* images per seconds.
+
 ![](images/paraview_animation-3.png){.center}
+
+Paraview will now take a bit of time to generate all the frames of the videos and save the video.
 
 
 ## ▶️ Download the final output
 
+After completion of the animation generation, the video is saved on your MeluXina data storage.
+
+👉 Download the video of the simulation results to your laptop.
+
+In the [MeluXina web-portal](https://portal.lxp.lu/), use the menu **Files** and select **`/mnt/tier2/project/p2021259`** to explore your project directory.
+
 ![](images/ood_download-1.png){.center}
 
+Navigate through your files and open the directory that your used earlier to save the animation.
+
 ![](images/ood_download-2.png){.center}
+
+Finally, scroll down through the list of files and find the video. Click on the video to download it to your laptop and watch it.
 
 ![](images/philharmonie-wind-meluxina.gif){.center}
 
