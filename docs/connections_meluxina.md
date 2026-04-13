@@ -201,7 +201,7 @@ It offers similar possibilities to the [Command line access using SSH key](#comm
 ![Open OnDemand Files](images/ood_jobs.png){ align="left" width="100" .off-glb }
 <br>The **Active Jobs** application displays your computation jobs currently running on MeluXina. This also includes the ones you started from the command line interface. For privacy reason, you cannot see the jobs of the other users.<br><br><br>
 
-Other applications will be used in the following parts of the training. In the [Urban wind simulation and visualization](urban_wind_simulation.md), you will use the **ParaView** application to visualize the result of your simulation. In the [PyTorch notebook with JupyterLab](pytorch_notebook.md), you will start a **JupyterLab** on a compute node to perform an deep learning training with PyTorch.
+Other applications will be used in the following parts of the training. In the [Urban wind simulation and visualization](urban_wind_simulation.md), you will use the **ParaView** application to visualize the result of your simulation. In the [PyTorch notebooks with JupyterLab](pytorch_notebooks.md), you will start a **JupyterLab** on a compute node to perform an deep learning training and finetuning with PyTorch.
 
 ---
 

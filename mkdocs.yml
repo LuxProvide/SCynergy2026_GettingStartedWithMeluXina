@@ -8,7 +8,7 @@ nav:
     - 🏠 Overview: index.md
     - 1️⃣ Configuring your access to MeluXina: connections_meluxina.md
     - 2️⃣ Urban wind simulation and visualization: urban_wind_simulation.md
-    - 3️⃣ PyTorch notebook with JupyterLab: pytorch_notebook.md
+    - 3️⃣ PyTorch notebooks with JupyterLab: pytorch_notebooks.md
 
 exclude_docs: |
     *.backup

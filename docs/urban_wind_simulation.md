@@ -8,9 +8,9 @@ In this part, you will get a quick overview of an HPC workflow.
 With this example, you will run and post-process a simulation of urban wind around the Philharmonie of Luxembourg based on Computational Fluid Dynamics (CFD). 
 This workflow is designed for you to practice the different ways to access and use the [MeluXina supercomputer](https://docs.lxp.lu/system/overview/). You will proceed to the following steps:
 
-1. Submit a batch job for a parallel CFD simulation and monitor its execution.
-2. Visualize and post-process the simulation result interactively.
-3. Download the final post-processed results on your laptop.
+1. [Submit a batch job for a parallel CFD simulation and monitor its execution](#submit-of-a-parallel-cfd-simulation-monitor-execution)
+2. [Visualize and post-process the simulation result interactively](#post-processing-the-simulation-output)
+3. [Download the final post-processed results on your laptop](#download-the-final-output)
 
 ## ▶️ Submit of a parallel CFD simulation & monitor execution
 
@@ -79,7 +79,7 @@ echo "== Finished job ${SLURM_JOBID} at $(date)"
 3. Prepare simulation input: copy from a template and decompose input for parallel execution
 4. Run the OpenFOAM simulation in parallel
 
-
+### TODO monitor execution
 
 ## ▶️ Post-processing the simulation output
 

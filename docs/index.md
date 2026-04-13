@@ -26,7 +26,7 @@ Today's training is composed of:
 - A **hands-on** session with three activities (50 minutes)
     - First connections to MeluXina
     - HPC workflow: Urban wind simulation and visualization
-    - AI workflow: PyTorch notebook with JupyterLab on MeluXina
+    - AI workflow: PyTorch notebooks with JupyterLab on MeluXina
 
 
 
@@ -63,7 +63,7 @@ Today's training is composed of:
 
 - [Hands-on Part 1: 🔑 Configuring your access to MeluXina](connections_meluxina.md)
 - [Hands-on Part 2: 🏙️ Urban wind simulation and visualization](urban_wind_simulation.md)
-- [Hands-on Part 3: 🧠 PyTorch notebook with JupyterLab](pytorch_notebook.md)
+- [Hands-on Part 3: 🧠 PyTorch notebooks with JupyterLab](pytorch_notebooks.md)
 
 
 ## ℹ️ About this training

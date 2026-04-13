@@ -1,13 +1,14 @@
 ![SCynergy 2026](./assets/scynergy2026.png){ width="640" .off-glb }
 
-#  Hands-on: PyTorch notebook with JupyterLab
+#  Hands-on: PyTorch notebooks with JupyterLab
 
+- start JupyterLab
 - set working directory
 
 
-## Training a Classifier
+## ▶️ Training a Classifier
 
-![](images/torch_classifier.png)
+![](images/torch_classifier.png){.center}
 
 https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
 
@@ -18,9 +19,9 @@ https://docs.pytorch.org/tutorials/_downloads/4e865243430a47a00d551ca0579a6f6c/c
 - select the right kernel
 
 
-## TorchVision Object Detection Finetuning Tutorial
+## ▶️ TorchVision Object Detection Finetuning Tutorial
 
-![](images/torch_object_vision.png)
+![](images/torch_object_detection.png){.center}
 
 https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html
 
