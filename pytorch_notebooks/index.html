@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorial for your first steps on MeluXina supercomputer">
+      
+      
+        <meta name="author" content="Xavier Besseron">
+      
+      
+        <link rel="canonical" href="https://LuxProvide.github.io/GettingStartedOnMeluXina/pytorch_notebooks/">
+      
+      
+        <link rel="prev" href="../urban_wind_simulation/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>3️⃣ PyTorch notebooks with JupyterLab - SCynergy 2026 - Getting Started with MeluXina</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hands-on-pytorch-notebooks-with-jupyterlab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SCynergy 2026 - Getting Started with MeluXina" class="md-header__button md-logo" aria-label="SCynergy 2026 - Getting Started with MeluXina" data-md-component="logo">
+      
+  <img src="../assets/LuxProvide_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SCynergy 2026 - Getting Started with MeluXina
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3️⃣ PyTorch notebooks with JupyterLab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SCynergy 2026 - Getting Started with MeluXina" class="md-nav__button md-logo" aria-label="SCynergy 2026 - Getting Started with MeluXina" data-md-component="logo">
+      
+  <img src="../assets/LuxProvide_logo_white.svg" alt="logo">
+
+    </a>
+    SCynergy 2026 - Getting Started with MeluXina
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connections_meluxina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Configuring your access to MeluXina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urban_wind_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2️⃣ Urban wind simulation and visualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3️⃣ PyTorch notebooks with JupyterLab
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3️⃣ PyTorch notebooks with JupyterLab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#running-jupyterlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▶️ Running JupyterLab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-a-classifier-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▶️ Training a Classifier Tutorial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#torchvision-object-detection-finetuning-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▶️ TorchVision Object Detection Finetuning Tutorial
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><img alt="SCynergy 2026" class="off-glb" src="../assets/scynergy2026.png" width="640"></p>
+<h1 id="hands-on-pytorch-notebooks-with-jupyterlab">Hands-on: PyTorch notebooks with JupyterLab<a class="headerlink" href="#hands-on-pytorch-notebooks-with-jupyterlab" title="Permanent link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/pytorch_logo.png" data-desc-position="bottom"><img align="right" alt="PyTorch" src="../images/pytorch_logo.png" width="320"></a></p>
+<p>In this part, you will get familiar with running Jupyter notebooks on the MeluXina HPC system. We will guide you through setting up the environment, i.e., running your JupyterLab instance on a compute node and executing the code from within the browser. The examples below focus specifically on <strong>PyTorch notebooks</strong>, which have been taken directly from the <a href="https://docs.pytorch.org/tutorials/index.html">official PyTorch tutorials</a> to get started with practical deep learning workflows. It aims to be concrete examples of how to run standard out-of-box Jupyter notebooks on the MeluXina supercomputer with minimal adaptation.</p>
+<hr>
+<h2 id="running-jupyterlab">▶️ Running JupyterLab<a class="headerlink" href="#running-jupyterlab" title="Permanent link">¶</a></h2>
+<p>Similar to ParaView, JupyterLab is started from the MeluXina web-portal, allowing you to use the Jupyter interface from your local browser. </p>
+<p>👉 Start the MeluXina web-portal: <a href="https://portal.lxp.lu/"><strong>https://portal.lxp.lu/</strong></a>. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If needed, follow the instructions of the <a href="../connections_meluxina/">previous part</a>:</p>
+<ul>
+<li><a href="../connections_meluxina/#web-portal-access">Web-portal access</a></li>
+</ul>
+</div>
+<p>👉 Open the <strong>Jupyter Notebook</strong> application.</p>
+<ol>
+<li>Click on the <a href="https://portal.lxp.lu/pun/sys/dashboard/batch_connect/sys/bc_meluxina_jupyter/session_contexts/new">Jupyter Notebook application on the web-portal</a>.</li>
+<li>
+<p>Use the settings defined below and click the <strong>Launch</strong> button.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_jupyter_settings.png" data-desc-position="bottom"><img alt="JupyterLab settings" class="center" src="../images/ood_jupyter_settings.png"></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Your Python Virtual Environment Path</p>
+<p>The setting "Your Python Virtual Environment Path" defines a path to your own Python virtual environment (<code>venv</code>), new or existing. You should set it to a path where you have write permission.</p>
+<p>You can use the value <code>/project/home/p201259/workspaces/u10XXXX/venv-sc26-pytorch/</code> making sure to replace <code>u10XXXX</code> by your own username.</p>
+</div>
+</li>
+<li>
+<p>Wait for job to run and then click the <strong>Launch Jupyter Notebook</strong> button as shown below.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_jupyter_job.png" data-desc-position="bottom"><img alt="JupyterLab settings" class="center" src="../images/ood_jupyter_job.png"></a></p>
+</li>
+</ol>
+<p>You now have JupyterLab software running on a MeluXina compute node.
+You can use it to import and execute Jupyter Notebook (in Python, R, Julia, etc.) or develop your own.</p>
+<p>Before opening any notebook, let's set the working directory. To avoid any conflicts with other users of the same project, create a working directory in <code>/project/home/p201259/workspaces/u10XXXX/pytorch_notebooks/</code> (replace <code>u10XXXX</code> with your own username).</p>
+<p>👉 Set your working directory in JupyterLab</p>
+<ol>
+<li>
+<p>In the JupyterLab file browser at the top left, navigate to <code>/p201259/workspaces/u10XXXX</code>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_jupyter_working_directory.png" data-desc-position="bottom"><img alt="JupyterLab working directory" class="center" src="../images/ood_jupyter_working_directory.png"></a></p>
+</li>
+<li>
+<p>Create a new directory named <code>pytorch_notebooks</code> and navigate into it.</p>
+</li>
+</ol>
+<p>You're now ready to work on the next steps.</p>
+<hr>
+<h2 id="training-a-classifier-tutorial">▶️ Training a Classifier Tutorial<a class="headerlink" href="#training-a-classifier-tutorial" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/torch_classifier.png" data-desc-position="bottom"><img align="right" alt="" src="../images/torch_classifier.png" width="320"></a></p>
+<p>In this section, you will execute the PyTorch tutorial <strong>Training a Classifier</strong>.
+It is one of the official PyTorch tutorials that you can find here:</p>
+<p><a href="https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html">https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html</a>.</p>
+<p>This notebook uses the CIFAR10 dataset and trains a model to recognize objects classes: ‘airplane’, ‘automobile’, ‘bird’, ‘cat’, ‘deer’, ‘dog’, ‘frog’, ‘horse’, ‘ship’, ‘truck’. For more details, you can refer to the content of the tutorial itself.</p>
+<p>The notebook can be downloaded from the <a href="https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html">page of the tutorial</a> by clicking on the top button <strong>Download Notebook</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/download_notebook.png" data-desc-position="bottom"><img alt="Download Notebook" class="center" src="../images/download_notebook.png"></a></p>
+<p>👉 Open the "Training a Classifier" notebook in JupyterLab</p>
+<ol>
+<li>
+<p>In JupyterLab, go to the menu <strong>File</strong> and click <strong>Open from URL...</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/jupyter_open_url.png" data-desc-position="bottom"><img alt="JupyterLab Open URL" class="center" src="../images/jupyter_open_url.png"></a></p>
+</li>
+<li>
+<p>Paste the URL of the PyTorch notebook:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://docs.pytorch.org/tutorials/_downloads/4e865243430a47a00d551ca0579a6f6c/cifar10_tutorial.ipynb
+</span></code></pre></div>
+</li>
+<li>
+<p>In the top menu <strong>Kernel</strong>, click on <strong>Change Kernel...</strong>. Then select the pre-configured PyTorch kernel <strong>Python (venv-sc26-pytorch)</strong>. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/jupyter_change_kernel.png" data-desc-position="bottom"><img alt="" class="center" src="../images/jupyter_change_kernel.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/jupyter_kernel_pytorch.png" data-desc-position="bottom"><img alt="" class="center" src="../images/jupyter_kernel_pytorch.png"></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Name of the pre-configured kernel</p>
+<p>The name of the pre-configured PyTorch kernel, i.e., <strong>Python (venv-sc26-pytorch)</strong> is actually the last component of the path set in the "Your Python Virtual Environment Path" in the <a href="#running-jupyterlab">JupyterLab settings defined earlier</a>. </p>
+</div>
+</li>
+</ol>
+<p>👉 Now, you can execute the notebook and follow the PyTorch tutorial "Training a Classifier" on your own.</p>
+<hr>
+<h2 id="torchvision-object-detection-finetuning-tutorial">▶️ TorchVision Object Detection Finetuning Tutorial<a class="headerlink" href="#torchvision-object-detection-finetuning-tutorial" title="Permanent link">¶</a></h2>
+<p>In this section, you will execute the PyTorch tutorial <strong>TorchVision Object Detection Finetuning</strong>.
+It is one of the official PyTorch tutorials that you can find here:</p>
+<p><a href="https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html">https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html</a>.</p>
+<blockquote>
+<p>For this tutorial, we will be finetuning a pre-trained Mask R-CNN model on the Penn-Fudan Database for Pedestrian Detection and Segmentation. It contains 170 images with 345 instances of pedestrians, and we will use it to illustrate how to use the new features in torchvision in order to train an object detection and instance segmentation model on a custom dataset.</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/torch_object_detection.png" data-desc-position="bottom"><img alt="" class="center" src="../images/torch_object_detection.png"></a></p>
+<p>The notebook can be downloaded on the <a href="https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html">page of the tutorial</a> by clicking on the top button <strong>Download Notebook</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/download_notebook.png" data-desc-position="bottom"><img alt="Download Notebook" class="center" src="../images/download_notebook.png"></a></p>
+<p>We will follow an approach similar to the previous one.</p>
+<p>👉 Open the "TorchVision Object Detection Finetuning" notebook in JupyterLab</p>
+<ol>
+<li>
+<p>In JupyterLab, go to the menu <strong>File</strong> and click <strong>Open from URL...</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/jupyter_open_url.png" data-desc-position="bottom"><img alt="JupyterLab Open URL" class="center" src="../images/jupyter_open_url.png"></a></p>
+</li>
+<li>
+<p>Paste the URL of the PyTorch notebook:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://docs.pytorch.org/tutorials/_downloads/4a542c9f39bedbfe7de5061767181d36/torchvision_tutorial.ipynb
+</span></code></pre></div>
+</li>
+<li>
+<p>In the top menu <strong>Kernel</strong>, click on <strong>Change Kernel...</strong>. Then select the pre-configured PyTorch kernel <strong>Python (venv-sc26-pytorch)</strong>. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/jupyter_change_kernel.png" data-desc-position="bottom"><img alt="" class="center" src="../images/jupyter_change_kernel.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/jupyter_kernel_pytorch.png" data-desc-position="bottom"><img alt="" class="center" src="../images/jupyter_kernel_pytorch.png"></a></p>
+</li>
+</ol>
+<p>👉 Now, you can execute the notebook and follow the PyTorch tutorial "TorchVision Object Detection Finetuning" on your own.</p>
+<div class="admonition tip">
+<p class="admonition-title">Additional Python modules</p>
+<p>This second notebook requires the installation of an additional Python module to run successfully.
+To do that, you can create a new cell at the top of the notebook with the following content:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Install additional Python module 'pycocotools'</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">pycocotools</span>
+</span></code></pre></div>
+</div>
+<hr>
+<p><a href="https://epicure-hpc.eu/"><img alt="EPICURE" src="../assets/logo_epicure.png" width="420"></a> 
+<a href="https://luxprovide.lu"><img alt="LuxProvide" src="../assets/logo_luxprovide.png" width="320"></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../urban_wind_simulation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2️⃣ Urban wind simulation and visualization">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2️⃣ Urban wind simulation and visualization
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.footer", "navigation.sections", "navigation.path", "toc.integrate", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../js/open_in_new_tab.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

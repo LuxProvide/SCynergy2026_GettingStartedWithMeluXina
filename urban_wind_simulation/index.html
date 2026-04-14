@@ -1,0 +1,840 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorial for your first steps on MeluXina supercomputer">
+      
+      
+        <meta name="author" content="Xavier Besseron">
+      
+      
+        <link rel="canonical" href="https://LuxProvide.github.io/GettingStartedOnMeluXina/urban_wind_simulation/">
+      
+      
+        <link rel="prev" href="../connections_meluxina/">
+      
+      
+        <link rel="next" href="../pytorch_notebooks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>2️⃣ Urban wind simulation and visualization - SCynergy 2026 - Getting Started with MeluXina</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hands-on-urban-wind-simulation-and-visualization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SCynergy 2026 - Getting Started with MeluXina" class="md-header__button md-logo" aria-label="SCynergy 2026 - Getting Started with MeluXina" data-md-component="logo">
+      
+  <img src="../assets/LuxProvide_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SCynergy 2026 - Getting Started with MeluXina
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2️⃣ Urban wind simulation and visualization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SCynergy 2026 - Getting Started with MeluXina" class="md-nav__button md-logo" aria-label="SCynergy 2026 - Getting Started with MeluXina" data-md-component="logo">
+      
+  <img src="../assets/LuxProvide_logo_white.svg" alt="logo">
+
+    </a>
+    SCynergy 2026 - Getting Started with MeluXina
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connections_meluxina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Configuring your access to MeluXina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2️⃣ Urban wind simulation and visualization
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2️⃣ Urban wind simulation and visualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#submit-of-a-parallel-cfd-simulation-monitor-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▶️ Submit of a parallel CFD simulation &amp; monitor execution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="▶️ Submit of a parallel CFD simulation &amp; monitor execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hpc-job-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HPC Job Submission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyze-and-post-process-the-simulation-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▶️ Analyze and post-process the simulation output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="▶️ Analyze and post-process the simulation output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-paraview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open ParaView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-the-simulation-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load the simulation results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-video-of-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a video of the results
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-the-final-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▶️ Download the final output
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch_notebooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3️⃣ PyTorch notebooks with JupyterLab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><img alt="SCynergy 2026" class="off-glb" src="../assets/scynergy2026.png" width="640"></p>
+<h1 id="hands-on-urban-wind-simulation-and-visualization">Hands-on: Urban wind simulation and visualization<a class="headerlink" href="#hands-on-urban-wind-simulation-and-visualization" title="Permanent link">¶</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/philharmonie-rt.png" data-desc-position="bottom"><img alt="Wind on the Philharmonie" src="../images/philharmonie-rt.png"></a></p>
+<p>In this part, you will get a quick overview of a typical High-Performance Computing (HPC) workflow. You will work with a simplified yet realistic example of a Computational Fluid Dynamics (CFD) simulation focusing on the <strong>urban wind patterns around the Philharmonie of Luxembourg</strong>. </p>
+<p>This hands-on workflow is specifically designed for you to practice the essential steps involved in modern scientific computing: accessing the system, submitting parallel jobs, and post-processing large datasets. Through this exercise, you will learn the different ways to interact with and utilize the resources of the <a href="https://docs.lxp.lu/system/overview/">MeluXina supercomputer</a>, gaining practical experience in a real-world HPC environment.
+You will complete the following steps:</p>
+<ol>
+<li><a href="#submit-of-a-parallel-cfd-simulation-monitor-execution">Step 1: Submit a batch job for a parallel CFD simulation and monitor its execution</a></li>
+<li><a href="#analyze-and-post-process-the-simulation-output">Step 2: Visualize and post-process the simulation result interactively</a></li>
+<li><a href="#download-the-final-output">Step 3: Download the final post-processed results on your laptop</a></li>
+</ol>
+<hr>
+<h2 id="submit-of-a-parallel-cfd-simulation-monitor-execution">▶️ Submit of a parallel CFD simulation &amp; monitor execution<a class="headerlink" href="#submit-of-a-parallel-cfd-simulation-monitor-execution" title="Permanent link">¶</a></h2>
+<p>The execution of large parallel computing jobs in High-Performance Computing (HPC) environments is almost exclusively performed in <strong>non-interactive mode</strong>, commonly referred to as <strong>batch mode</strong>, utilizing a dedicated submission script. Unlike interactive sessions where a user directly controls the computation in real-time, batch jobs are submitted to a job scheduler (such as Slurm) and placed in a queue. The system then manages the allocation of necessary resources—such as CPU cores, memory, and time—and initiates the execution once the requested resources become available.</p>
+<p>This approach offers significant flexibility and efficiency for complex simulations:</p>
+<ul>
+<li><strong>Resource Optimization</strong>: It ensures that shared computing resources are utilized optimally by running multiple jobs in parallel or sequentially without manual intervention.</li>
+<li><strong>Decoupling Execution from User Presence</strong>: Crucially, the user does not need to maintain an active connection during the execution phase. This allows heavy computations, which may take minutes or even hours, to proceed in the background without tying up a user's terminal or internet connection.</li>
+<li><strong>Flexibility</strong>: Jobs can be scheduled to run at any time, including nights, weekends, or periods of lower system load, ensuring that critical research tasks are completed without disrupting active users.</li>
+</ul>
+<p>This submission process is initiated and managed via a standard <strong>shell access</strong> environment through a command-line terminal.</p>
+<h3 id="shell-access">Shell Access<a class="headerlink" href="#shell-access" title="Permanent link">¶</a></h3>
+<p>👉 Open a shell on MeluXina supercomputer. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use your preferred method among the two options configured in the <a href="../connections_meluxina/">previous part</a>:</p>
+<ul>
+<li><a href="../connections_meluxina/#command-line-access-using-ssh">Direct shell access via SSH</a></li>
+<li><a href="../connections_meluxina/#web-portal-access">Shell access via the web-portal</a></li>
+</ul>
+</div>
+<p>Once connected, you should see the MeluXina welcome banner:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/meluxina_banner.png" data-desc-position="bottom"><img alt="MeluXina welcome banner" class="center" src="../images/meluxina_banner.png"></a></p>
+<h3 id="hpc-job-submission">HPC Job Submission<a class="headerlink" href="#hpc-job-submission" title="Permanent link">¶</a></h3>
+<p>A submission script for Slurm has been prepared for you to easily run this parallel HPC simulation.</p>
+<p>👉 Submit the simulation job using the following command:
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sbatch<span class="w"> </span>/project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_philharmonie/run.sh
+</span></code></pre></div><p></p>
+<div class="admonition tip">
+<p class="admonition-title">Using the command line</p>
+<p>To avoid mistakes, simply copy the line above and paste it in the MeluXina terminal. Then press <code>Enter</code> to execute the command.</p>
+<p>If successful, you should see something like this:
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Submitted batch job 4472627
+</span></code></pre></div><p></p>
+</div>
+<details class="info">
+<summary>Details of the submission script</summary>
+<p>You can quickly inspect the content of submission script using the <code>cat</code> command 🔎</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cat<span class="w"> </span>/project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_philharmonie/run.sh
+</span></code></pre></div>
+<p class="annotate"></p><div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash -l</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">#SBATCH --job-name WindPhilharmonie                        (1)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#SBATCH --time 0-00:30:00</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">#SBATCH --nodes 1</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">#SBATCH --ntasks 16</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">#SBATCH --cpus-per-task 1</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">#SBATCH --partition cpu</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">#SBATCH --qos default</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1">#SBATCH --account p201259</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">#SBATCH --output SLURM_%x_%j.log</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"== Starting job </span><span class="si">${</span><span class="nv">SLURM_JOBID</span><span class="si">}</span><span class="s2"> at </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="c1"># Setup OpenFOAM                                           (2)</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>module<span class="w"> </span>load<span class="w"> </span>env/release/2025.1
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a>module<span class="w"> </span>load<span class="w"> </span>OpenFOAM/13-foss-2025a
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOAM_BASH</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="c1"># Create a new run directory populated with input files    (3)</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="nv">RUNDIR</span><span class="o">=</span><span class="s2">"/project/home/p201259/workspaces/</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">/wind_philharmonie-</span><span class="si">${</span><span class="nv">SLURM_JOBID</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">RUNDIR</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a>rsync<span class="w"> </span>-avzR<span class="w"> </span>/project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_philharmonie/./<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">RUNDIR</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Using run directory '</span><span class="si">${</span><span class="nv">RUNDIR</span><span class="si">}</span><span class="s2">'"</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">RUNDIR</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="c1"># Set the number of processes in OpenFOAM settings</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a>foamDictionary<span class="w"> </span>-entry<span class="w"> </span>numberOfSubdomains<span class="w"> </span>-set<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>system/decomposeParDict
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="c1"># Decompose the problem for parallel execution</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="nb">time</span><span class="w"> </span>decomposePar<span class="w"> </span>-force
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="c1"># Run the OpenFOAM solver in parallel                      (4)</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="nb">time</span><span class="w"> </span>srun<span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>foamRun<span class="w"> </span>-solver<span class="w"> </span>incompressibleFluid<span class="w"> </span>-parallel
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="c1"># Reconstruct output after parallel execution</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="nb">time</span><span class="w"> </span>reconstructPar
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37"></a>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"== Finished job </span><span class="si">${</span><span class="nv">SLURM_JOBID</span><span class="si">}</span><span class="s2"> at </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">"</span>
+</span></code></pre></div></td></tr></tbody></table></div><p></p>
+<ol>
+<li>The <code>#SBATCH</code> directives specify the configuration of the Slurm job. </li>
+<li>Setup the software environment, in this case you use OpenFOAM.</li>
+<li>Prepare simulation input: copy from a template and decompose input for parallel execution</li>
+<li>Run the OpenFOAM simulation in parallel</li>
+</ol>
+</details>
+<details class="example">
+<summary>Running with more processes?</summary>
+<p>You feel playful and want to run the simulation with more parallel processes? 🧑‍🔬</p>
+<p>You can specify options on the command line to override the values of the script. For example, you can add <code>--ntasks 32</code> to run the simulation with 32 parallel processes: 
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sbatch<span class="w"> </span>--ntasks<span class="w"> </span><span class="m">32</span><span class="w"> </span>/project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_philharmonie/run.sh
+</span></code></pre></div><p></p>
+<p>Keep in mind that:</p>
+<ul>
+<li>Resources are shared and limited during the training.</li>
+<li>There are limitations on the number of processes you can run on a single compute node.</li>
+<li>Using more processes does not systematically mean a faster execution. In this case, reconstructing the parallel output might actually be slower.</li>
+</ul>
+</details>
+<h3 id="execution-monitoring">Execution monitoring<a class="headerlink" href="#execution-monitoring" title="Permanent link">¶</a></h3>
+<p>Your HPC job is now queued on the MeluXina supercomputer and is waiting for available compute resources. To keep track of its progress, you can monitor its status in real-time using the Slurm command-line interface tool <code>squeue</code>. This command lists your active jobs along with key details such as the job ID, the number of resources allocated, the current state of the job, and the node it is running on (or will run on). By running this command periodically, you can verify that your job is accepted by the scheduler, observe its transition from "PENDING" to "RUNNING," and eventually confirm its completion.</p>
+<p>👉 Run the <code>squeue</code> command to see the status of your job:
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>squeue
+</span></code></pre></div><p></p>
+<div class="admonition info">
+<p class="admonition-title">About the job state</p>
+<p>The output of <code>squeue</code> shows information about your current jobs in the queue:
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/squeue_output.png" data-desc-position="bottom"><img alt="squeue output" class="center" src="../images/squeue_output.png"></a></p>
+<p>The <code>STATE</code> field indicates the current status of the job. It typically goes from:
+</p><pre class="mermaid"><code>flowchart LR
+    PENDING --&gt; CONFIGURING --&gt; RUNNING
+    RUNNING --&gt; COMPLETED
+    RUNNING --&gt; FAILED</code></pre><p></p>
+<p>After some time, the finished jobs (i.e., <code>COMPLETED</code> or <code>FAILED</code>) disappear from the list.</p>
+</div>
+<p>👉 Monitor the execution of your job until it is finished. Then you can continue to the next step.</p>
+<hr>
+<h2 id="analyze-and-post-process-the-simulation-output">▶️ Analyze and post-process the simulation output<a class="headerlink" href="#analyze-and-post-process-the-simulation-output" title="Permanent link">¶</a></h2>
+<p>Once the execution of the simulation is complete, the raw computational data becomes accessible for detailed analysis and interpretation. This transition from raw simulation output to meaningful visual insights is performed interactively using the <a href="https://www.paraview.org/">ParaView visualization software</a>. </p>
+<p>To facilitate this process within the HPC environment, ParaView is launched directly from the MeluXina web-portal, allowing you to interact with the graphical interface in real-time from your local browser. This setup enables you to visualize complex flow fields, such as the urban wind patterns around the Philharmonie, without needing to install heavy software locally, manage complex remote display configurations, or even download the data to your laptop.</p>
+<h3 id="open-paraview">Open ParaView<a class="headerlink" href="#open-paraview" title="Permanent link">¶</a></h3>
+<p>👉 Start the MeluXina web-portal: <a href="https://portal.lxp.lu/"><strong>https://portal.lxp.lu/</strong></a>. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If needed, follow the instructions of the <a href="../connections_meluxina/">previous part</a>:</p>
+<ul>
+<li><a href="../connections_meluxina/#web-portal-access">Web-portal access</a></li>
+</ul>
+</div>
+<p>👉 Open the <strong>ParaView</strong> application.</p>
+<ol>
+<li>Click on the <a href="https://portal.lxp.lu/pun/sys/dashboard/batch_connect/sys/bc_meluxina_paraview/session_contexts/new">ParaView application on the web-portal</a>.</li>
+<li>Use the settings defined below and click the <strong>Launch</strong> button.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_paraview_settings.png" data-desc-position="bottom"><img alt="Paraview settings" class="center" src="../images/ood_paraview_settings.png"></a></li>
+<li>Wait for job to run and then click the <strong>Launch ParaView</strong> button as shown below.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_paraview_job.png" data-desc-position="bottom"><img alt="Paraview settings" class="center" src="../images/ood_paraview_job.png"></a></li>
+</ol>
+<p>You now have the ParaView software running on a remote MeluXina compute node. Its graphical interface is streamed in real time to your laptop via the web browser, allowing you to interact with the visualization locally as if the application were installed on your machine. While the experience is generally smooth, please be aware that high network latency or a busy Wi-Fi connection may introduce slight delays or reduced responsiveness during complex interactions.</p>
+<h3 id="load-the-simulation-results">Load the simulation results<a class="headerlink" href="#load-the-simulation-results" title="Permanent link">¶</a></h3>
+<p>Now, open the results of the urban wind simulation in ParaView to explore the simulated wind streamlines, pressure distributions, and velocity fields around the Philharmonie of Luxembourg. This interactive session allows you to inspect the high-resolution data generated by the HPC job, offering a visual insight that would be difficult to grasp from raw numerical output alone.</p>
+<p>👉 In the ParaView menu <strong>File</strong>, click on <strong>Load State...</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/paraview_load_state-1.png" data-desc-position="bottom"><img alt="Paraview load state" class="center" src="../images/paraview_load_state-1.png"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Finding your simulation results</p>
+<ul>
+<li>Navigate through your files to locate the results of your simulation. </li>
+<li>They should be located in <code>/project/home/p201259/workspaces/u10XXXX/wind_philharmonie-447ZZZZ</code>, with<ul>
+<li><code>u10XXXX</code> being your actual username;</li>
+<li><code>447ZZZZ</code> being the job ID of your submitted job.</li>
+</ul>
+</li>
+<li>In this directory, open the file named <strong><code>philharmonie.pvsm</code></strong>.</li>
+</ul>
+</div>
+<p>Then, make sure to use the settings below and click <strong>OK</strong>.
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/paraview_load_state-2.png" data-desc-position="bottom"><img alt="Paraview load state" class="center" src="../images/paraview_load_state-2.png"></a></p>
+<p>A simple 3D model of the <a href="http://g-o.lu/3/zqKc0">Place de l'Europe and of the Philharmonie</a> will open. 
+It will show the simulated wind streamlines and wind velocity.
+You can change the view, zoom-in and zoom-out to explore the simulation output.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/paraview_philharmonie.png" data-desc-position="bottom"><img alt="Urban Wind around the Philharmonie in Paraview" class="center" src="../images/paraview_philharmonie.png"></a></p>
+<details class="tip">
+<summary>Return to a clean state</summary>
+<p>After many changes, maybe you will want to reset the view. 
+In this case, the easiest is to go in the <strong>Edit</strong> menu and click on <strong>Reset Session</strong>.
+Then you can load the simulation results again to restart from a clean state.</p>
+</details>
+<h3 id="create-a-video-of-the-results">Create a video of the results<a class="headerlink" href="#create-a-video-of-the-results" title="Permanent link">¶</a></h3>
+<p>To effectively communicate the dynamic nature of the urban wind simulation, you can generate a video recording that captures the movement of wind streamlines and velocity fields around the Philharmonie of Luxembourg. This visual summary transforms the static 3D model into an animation, making the complex fluid dynamics easier to interpret and share.</p>
+<p>Once you have explored the simulation results, you can create this video directly within the ParaView interface.</p>
+<p>👉 In the Paraview menu <strong>File</strong>, click on <strong>Save Animation...</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/paraview_animation-1.png" data-desc-position="bottom"><img alt="Paraview save animation" class="center" src="../images/paraview_animation-1.png"></a></p>
+<p>Follow the settings below:</p>
+<ul>
+<li>Remember the directory in which you save the animation.</li>
+<li>Use a meaningful filename, e.g., <code>philharmonie-wind-meluxina.avi</code>.</li>
+<li>Select the file type <strong>FFMPEG AVI</strong>.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/paraview_animation-2.png" data-desc-position="bottom"><img alt="Paraview save animation" class="center" src="../images/paraview_animation-2.png"></a></p>
+<p>In the animation options, use a frame rate of <em>5</em> images per seconds.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/paraview_animation-3.png" data-desc-position="bottom"><img alt="Paraview save animation" class="center" src="../images/paraview_animation-3.png"></a></p>
+<p>ParaView will now take a bit of time to generate all the frames of the video and save it.</p>
+<hr>
+<h2 id="download-the-final-output">▶️ Download the final output<a class="headerlink" href="#download-the-final-output" title="Permanent link">¶</a></h2>
+<p>After the animation generation completes, the resulting video file is permanently stored on your MeluXina data storage.
+This file remains available for retrieval and can be accessed by using the file explorer provided within the web-portal to navigate through your directories and initiate the download process.</p>
+<p>👉 Download the video of the simulation results to your laptop.</p>
+<p>In the <a href="https://portal.lxp.lu/">MeluXina web-portal</a>, use the menu <strong>Files</strong> and select <strong><code>/mnt/tier2/project/p2021259</code></strong> to explore your project directory.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_download-1.png" data-desc-position="bottom"><img alt="" class="center" src="../images/ood_download-1.png"></a></p>
+<p>Navigate through your files and open the directory that you used earlier to save the animation.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/ood_download-2.png" data-desc-position="bottom"><img alt="" class="center" src="../images/ood_download-2.png"></a></p>
+<p>Finally, scroll down through the list of files and find the video. Click on the video to download it to your laptop and watch it.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/philharmonie-wind-meluxina.gif" data-desc-position="bottom"><img alt="" class="center" src="../images/philharmonie-wind-meluxina.gif"></a></p>
+<hr>
+<p><a href="https://epicure-hpc.eu/"><img alt="EPICURE" src="../assets/logo_epicure.png" width="420"></a> 
+<a href="https://luxprovide.lu"><img alt="LuxProvide" src="../assets/logo_luxprovide.png" width="320"></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../connections_meluxina/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1️⃣ Configuring your access to MeluXina">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1️⃣ Configuring your access to MeluXina
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../pytorch_notebooks/" class="md-footer__link md-footer__link--next" aria-label="Next: 3️⃣ PyTorch notebooks with JupyterLab">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3️⃣ PyTorch notebooks with JupyterLab
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.footer", "navigation.sections", "navigation.path", "toc.integrate", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../js/open_in_new_tab.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
