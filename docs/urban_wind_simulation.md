@@ -7,7 +7,7 @@
 In this part, you will get a quick overview of a typical High-Performance Computing (HPC) workflow. You will work with a simplified yet realistic example of a Computational Fluid Dynamics (CFD) simulation focusing on the **urban wind patterns around the Philharmonie of Luxembourg**. 
 
 This hands-on workflow is specifically designed for you to practice the essential steps involved in modern scientific computing: accessing the system, submitting parallel jobs, and post-processing large datasets. Through this exercise, you will learn the different ways to interact with and utilize the resources of the [MeluXina supercomputer](https://docs.lxp.lu/system/overview/), gaining practical experience in a real-world HPC environment.
-You will proceed to the following steps:
+You will complete the following steps:
 
 1. [Step 1: Submit a batch job for a parallel CFD simulation and monitor its execution](#submit-of-a-parallel-cfd-simulation-monitor-execution)
 2. [Step 2: Visualize and post-process the simulation result interactively](#post-processing-the-simulation-output)
@@ -53,7 +53,7 @@ sbatch /project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_p
 
 !!! tip "Using the command line"
 
-    To avoid mistake, simply copy the line above and paste it in the MeluXina terminal. Then press `Enter` to execute the command.
+    To avoid mistakes, simply copy the line above and paste it in the MeluXina terminal. Then press `Enter` to execute the command.
     
     If successful, you should see something like this:
     ```
@@ -112,7 +112,7 @@ sbatch /project/home/p201259/materials/14April_GettingStartedWithMeluXina/wind_p
     { .annotate }
     
     1. The `#SBATCH` directives specify the configuration of the Slurm job. 
-    2. Setup the software environment, in this case we use OpenFOAM.
+    2. Setup the software environment, in this case you use OpenFOAM.
     3. Prepare simulation input: copy from a template and decompose input for parallel execution
     4. Run the OpenFOAM simulation in parallel
 
@@ -220,7 +220,7 @@ You can change the view, zoom-in and zoom-out to explore the simulation output.
 
 ### Create a video of the results
 
-To effectively communicate the dynamic nature of the urban wind simulation, we will generate a video recording that captures the movement of wind streamlines  and velocity fields around the Philharmonie of Luxembourg. This visual summary transforms the static 3D model into an animation, making the complex fluid dynamics easier to interpret and share.
+To effectively communicate the dynamic nature of the urban wind simulation, you can generate a video recording that captures the movement of wind streamlines and velocity fields around the Philharmonie of Luxembourg. This visual summary transforms the static 3D model into an animation, making the complex fluid dynamics easier to interpret and share.
 
 Once you have explored the simulation results, you can create this video directly within the ParaView interface.
 

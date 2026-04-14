@@ -165,7 +165,7 @@ It serves as a web-based gateway to the high-performance computing (HPC) environ
 
 Follow these steps to access the **MeluXina Open OnDemand web-portal**:
 
-1. Open the url of the web-portal: [**https://portal.lxp.lu/**](https://portal.lxp.lu/). 
+1. Open the URL of the web-portal: [**https://portal.lxp.lu/**](https://portal.lxp.lu/). 
 2. Enter your **username** (`u10XXXX`) and **password** (set during [onboarding](#setup-your-service-desk-account))
 3. If you have enabled **2FA**, you'll be prompted for a one-time code
 
@@ -199,9 +199,9 @@ It offers similar possibilities to the [Command line access using SSH key](#comm
 <br>The **Home Directory** application allows you to explore the files in your home directory. Your project directories are also visible on the left column. You can navigate through your directories, view, download and upload files on your storage space of MeluXina.<br><br><br>
 
 ![Open OnDemand Files](images/ood_jobs.png){ align="left" width="100" .off-glb }
-<br>The **Active Jobs** application displays your computation jobs currently running on MeluXina. This also includes the ones you started from the command line interface. For privacy reason, you cannot see the jobs of the other users.<br><br><br>
+<br>The **Active Jobs** application displays your computation jobs currently running on MeluXina. This also includes the ones you started from the command line interface. For privacy reasons, you cannot see the jobs of the other users.<br><br><br>
 
-Other applications will be used in the following parts of the training. In the [Urban wind simulation and visualization](urban_wind_simulation.md), you will use the **ParaView** application to visualize the result of your simulation. In the [PyTorch notebooks with JupyterLab](pytorch_notebooks.md), you will start a **JupyterLab** on a compute node to perform an deep learning training and finetuning with PyTorch.
+Other applications will be used in the following parts of the training. In the [Urban wind simulation and visualization](urban_wind_simulation.md), you will use the **ParaView** application to visualize the result of your simulation. In the [PyTorch notebooks with JupyterLab](pytorch_notebooks.md), you will start a **JupyterLab** on a compute node to perform a deep learning training and finetuning with PyTorch.
 
 ---
 
