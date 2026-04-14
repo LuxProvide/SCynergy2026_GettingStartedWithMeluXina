@@ -6,6 +6,8 @@ This training is given in the context of the [Scynergy 2026 event](https://www.s
 
 ![](images/meluxina.jpg){ width="800" }
 
+---
+
 ## 🎯 Objectives
 
 - Gain a foundational understanding of **High-Performance Computing** (HPC).
@@ -14,6 +16,8 @@ This training is given in the context of the [Scynergy 2026 event](https://www.s
     - Uploading and downloading files;
     - Running computing jobs.
 - Explore **practical workflows**, including urban wind simulation and AI-driven analysis using PyTorch.
+
+---
 
 ## 🪧 Agenda
 
@@ -27,8 +31,6 @@ Today's training is composed of:
     - First connections to MeluXina
     - HPC workflow: Urban wind simulation and visualization
     - AI workflow: PyTorch notebooks with JupyterLab
-
-
 
 ---
 
@@ -56,7 +58,6 @@ Today's training is composed of:
         - Authentication
         - Shell & web-portal access
 
-
 ---
 
 ## 💻 Hands-on: Getting Started with MeluXina
@@ -65,6 +66,7 @@ Today's training is composed of:
 - [Hands-on Part 2: 🏙️ Urban wind simulation and visualization](urban_wind_simulation.md)
 - [Hands-on Part 3: 🧠 PyTorch notebooks with JupyterLab](pytorch_notebooks.md)
 
+---
 
 ## ℹ️ About this training
 
